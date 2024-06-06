@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: workflow1github
+  labels:
+    app: workflow1github
+    kubernetes.azure.com/generator: devhub
+  namespace: namespace-workflow-1717689533487
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: workflow1github
+  template:
+    metadata:
+      labels:
+        app: workflow1github
+    spec:
+      containers:
+        - name: workflow1github
+          image: myAKSClusterdce18fregistry.azurecr.io/image-workflow-1717689533487:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8000
